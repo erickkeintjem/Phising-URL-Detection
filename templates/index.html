@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard</title>
+</head>
+<body>
+
+<h1>PhishGuard</h1>
+
+<div class="menu">
+
+    <a href="/">Home</a>
+
+    <a href="/history">History</a>
+
+    <a href="/about">About</a>
+
+</div>
+
+<form action="/scan" method="POST">
+
+    <input
+        type="text"
+        name="url"
+        placeholder="Enter URL"
+        required
+    >
+
+    <button type="submit">
+        Scan URL
+    </button>
+    
+
+</form>
+    {% if error %}
+
+<p class="error">
+    {{ error }}
+</p>
+
+{% endif %}
+</body>
+</html>

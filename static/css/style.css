@@ -1,0 +1,162 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:600px;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+.subtitle{
+    margin-bottom:25px;
+    color:#666;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.result-card{
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.feature-box{
+    margin-top:20px;
+    text-align:left;
+}
+
+.feature-box ul{
+    margin-top:10px;
+    padding-left:20px;
+}
+
+.feature-box li{
+    margin-bottom:8px;
+}
+
+.safe{
+    color:green;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.danger{
+    color:red;
+    font-weight:bold;
+    font-size:22px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th,
+table td{
+    border:1px solid #ddd;
+    padding:10px;
+}
+
+table th{
+    background:#2563eb;
+    color:white;
+}
+
+.dashboard{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.card{
+    flex:1;
+    min-width:200px;
+    padding:20px;
+    border-radius:10px;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.charts{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.chart-box{
+    flex:1;
+    min-width:400px;
+    padding:20px;
+    background:#f5f5f5;
+    border-radius:10px;
+}
+
+.chart-box canvas{
+    width:100%;
+    max-height:350px;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.invalid{
+    color: orange;
+    font-weight: bold;
+    font-size: 24px;
+}

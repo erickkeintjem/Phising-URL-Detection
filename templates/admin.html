@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>Total Scan</h2>
+            <p>{{ stats.total_scan }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Safe URL</h2>
+            <p>{{ stats.total_safe }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Phishing URL</h2>
+            <p>{{ stats.total_phishing }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Threat Rate</h2>
+            <p>{{ threat_rate }}%</p>
+        </div>
+        
+        <div class="charts">
+
+    <div class="chart-box">
+        <h2>Threat Distribution</h2>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h2>Safe vs Phishing</h2>
+        <canvas id="barChart"></canvas>
+    </div>
+
+</div>
+
+    </div>
+
+    <h2>Latest Scans</h2>
+
+    <table>
+
+        <tr>
+            <th>URL</th>
+            <th>Status</th>
+            <th>Confidence</th>
+        </tr>
+
+        {% for row in history %}
+
+        <tr>
+
+            <td>{{ row[1] }}</td>
+
+            <td>{{ row[2] }}</td>
+
+            <td>{{ row[3] }}%</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+<a href="/">
+        <button>Back</button>
+    </a>
+
+</div>
+<script>
+
+const safeCount = {{ safe_count }};
+const phishingCount = {{ phishing_count }};
+
+const pieCtx = document
+    .getElementById('pieChart')
+    .getContext('2d');
+
+new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+        labels: [
+            'Safe',
+            'Phishing'
+        ],
+        datasets: [{
+            data: [
+                safeCount,
+                phishingCount
+            ]
+        }]
+    }
+});
+
+const barCtx = document
+    .getElementById('barChart')
+    .getContext('2d');
+
+new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'Safe',
+            'Phishing'
+        ],
+        datasets: [{
+            label: 'Total URL',
+            data: [
+                safeCount,
+                phishingCount
+            ]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+</script>
+
+
+</body>
+</html>

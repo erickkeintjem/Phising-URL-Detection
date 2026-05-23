@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Analysis Result</h1>
+
+    <div class="result-card">
+
+        <p><strong>URL:</strong></p>
+        <p>{{ url }}</p>
+
+        <br>
+
+        <p><strong>Status:</strong></p>
+
+        {% if result == "PHISHING" %}
+
+            <p class="danger">
+                ⚠️ PHISHING
+            </p>
+
+        {% elif result == "SAFE" %}
+
+            <p class="safe">
+                ✅ SAFE
+            </p>
+
+        {% else %}
+
+            <p class="invalid">
+                ❌ INVALID URL
+            </p>
+
+        {% endif %}
+
+        <br>
+
+        <p><strong>Confidence:</strong></p>
+        <p>{{ confidence }}%</p>
+
+        <div class="result-box">
+
+            <h3>Risk Analysis</h3>
+
+            <ul>
+                {% for reason in reasons %}
+                    <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+    </div>
+
+    {% if features %}
+
+    <div class="feature-box">
+
+        <h3>Feature Analysis</h3>
+
+        <ul>
+            <li>URL Length : {{ features[0] }}</li>
+            <li>Digit Count : {{ features[1] }}</li>
+            <li>Special Characters : {{ features[2] }}</li>
+            <li>Subdomains : {{ features[3] }}</li>
+            <li>HTTPS : {{ features[4] }}</li>
+            <li>Suspicious Words : {{ features[5] }}</li>
+            <li>Contains IP : {{ features[6] }}</li>
+            <li>Shortened URL : {{ features[7] }}</li>
+        </ul>
+
+    </div>
+
+    {% endif %}
+
+    <a href="/">
+        <button>
+            Scan Another URL
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>

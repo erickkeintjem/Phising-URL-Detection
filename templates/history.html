@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Scan History</h1>
+
+    <a href="/export">
+    <button>
+        Export CSV
+    </button>
+</a>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Status</th>
+            <th>Confidence</th>
+            <th>Date</th>
+        </tr>
+
+        {% for row in history %}
+
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}%</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/">
+        <button>Back</button>
+    </a>
+
+</div>
+
+</body>
+</html>

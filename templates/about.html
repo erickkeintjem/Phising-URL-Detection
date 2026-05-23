@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>About Phishing Detection System</h1>
+
+    <div class="card">
+
+        <h2>Project Description</h2>
+
+        <p>
+            Sistem ini digunakan untuk mendeteksi URL phishing
+            menggunakan Machine Learning dan analisis fitur URL.
+        </p>
+
+        <h2>Dataset</h2>
+
+        <p>
+            Dataset berasal dari Kaggle dengan kategori:
+        </p>
+
+        <ul>
+            <li>Benign URL</li>
+            <li>Phishing URL</li>
+            <li>Malware URL</li>
+            <li>Defacement URL</li>
+        </ul>
+
+        <p>
+            Total data training yang digunakan:
+            <strong>10.000 URL</strong>
+        </p>
+
+        <h2>Machine Learning</h2>
+
+        <ul>
+            <li>TF-IDF Vectorizer</li>
+            <li>Lexical Feature Extraction</li>
+            <li>Logistic Regression</li>
+        </ul>
+
+        <h2>Model Performance</h2>
+
+        <p>
+            Accuracy:
+            <strong>91.95%</strong>
+        </p>
+
+        <h2>Technologies</h2>
+
+        <ul>
+            <li>Python</li>
+            <li>Flask</li>
+            <li>SQLite</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Scikit-Learn</li>
+        </ul>
+
+    </div>
+
+    <a href="/">
+        <button>
+            Back to Home
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>
