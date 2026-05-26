@@ -8,24 +8,31 @@ df = pd.read_csv(
 
 print("Original size:", len(df))
 
-# Hapus data kosong
 df = df.dropna()
 
-# Hapus duplikat
-df = df.drop_duplicates(subset=["url"])
-
-# Konversi label
-df["label"] = df["type"].apply(
-    lambda x: 0 if x == "benign" else 1
+df = df.drop_duplicates(
+    subset=["url"]
 )
 
-# Ambil kolom yang diperlukan
-df = df[["url", "label"]]
+df = df[
+    df["type"].isin([
+        "benign",
+        "phishing"
+    ])
+]
+
+df["label"] = df["type"].map({
+    "benign": 0,
+    "phishing": 1
+})
+
+df = df[
+    ["url", "label"]
+]
 
 print("\nFinal distribution:")
 print(df["label"].value_counts())
 
-# Simpan dataset final
 df.to_csv(
     "dataset/urls.csv",
     index=False

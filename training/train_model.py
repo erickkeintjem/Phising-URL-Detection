@@ -12,11 +12,16 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 
 from feature_extractor import extract_features
+from url_normalizer import normalize_url
 
 print("Loading dataset...")
 
 df = pd.read_csv(
     "dataset/training_urls.csv"
+)
+
+df["url"] = df["url"].apply(
+    normalize_url
 )
 
 print("Total data:", len(df))
@@ -27,7 +32,9 @@ url_features = df["url"].apply(
     extract_features
 ).tolist()
 
-X_features = pd.DataFrame(url_features)
+X_features = pd.DataFrame(
+    url_features
+)
 
 print("Creating TF-IDF...")
 
@@ -86,6 +93,7 @@ y_pred = model.predict(
 )
 
 print("\nAccuracy:")
+
 print(
     accuracy_score(
         y_test,
@@ -94,6 +102,7 @@ print(
 )
 
 print("\nConfusion Matrix:")
+
 print(
     confusion_matrix(
         y_test,
@@ -102,6 +111,7 @@ print(
 )
 
 print("\nClassification Report:")
+
 print(
     classification_report(
         y_test,
